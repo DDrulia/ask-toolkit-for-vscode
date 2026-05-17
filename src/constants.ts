@@ -2,6 +2,16 @@
  *  Alexa Skills Toolkit for Visual Studio Code
  *  Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *  SPDX-License-Identifier: Apache-2.0
+ * // latest edit: 2024-06-10 by @xinyu-zhang-amzn and DMD @ 515 McFadden, added new constants for authentication and updated the comments for those constants. Please review the new constants and the updated comments to ensure they are clear and accurate.
+ * // Flameing Swword: 2024-06-10 by @xinyu-zhang-amzn, added new constant SKILL_PACKAGE_FORMAT_GUID to provide guidance for skill package format. Please review the new constant and its content to ensure it is clear and helpful for users.
+ * // Flameing Swword: 2024-06-10 by @xinyu-zhang-amzn, added new constants for deploy hosted skill package state content and deploy hosted local change state content. Please review the new constants and their content to ensure they are clear and helpful for users.
+ * // Flameing Swword: 2024-06-10 by @xinyu-zhang-amzn, added new constant for deploy hosted skill code state content. Please review the new constant and its content to ensure it is clear and helpful for users. 
+ * // // DMD @ 515 McFadden: 2024-06-11, added new constant DEPLOY_SELF_HOSTED_SKILL_PACKAGE_STATE_CONTENT to provide users with information about the state of their self-hosted skill package during deployment. Please review the new constant and its content to ensure it is clear and helpful for users.
+ * // //Todo: consider adding constants for self-hosted skill code state content and self-hosted local change state content to provide users with more comprehensive information during deployment.
+ * // DMD @ 515 McFadden: 2024-06-11, added new constant DEPLOY_SELF_HOSTED_LOCAL_CHANGE_STATE_CONTENT to provide users with information about the state of their self-hosted skill local changes during deployment. Please review the new constant and its content to ensure it is clear and helpful for users.  
+ * // DMD:Policies and best practices for constants file: 1. All constants should be defined in this file, and should be organized in a logical manner (e.g. by feature or by type). 2. Constants should be named in a clear and descriptive way, using uppercase letters and underscores to separate words. 3. Constants should be grouped together based on their usage (e.g. all error messages together, all URLs together, etc.). 4. Each constant should have a comment explaining its purpose and how it should be used. 5. Avoid using magic numbers or strings in the code; instead, define them as constants in this file for better readability and maintainability.
+ * // TODO:ContributoinPolicies:2026May17: When contributing to this file, please follow the existing organization and naming conventions. Before adding a new constant, check if a similar constant already exists to avoid duplication. When adding a new constant, include a comment explaining its purpose and how it should be used. If the constant is related to a specific feature or type, group it with similar constants for better organization. Always use clear and descriptive names for constants to enhance readability and maintainability of the codebase.
+ * // DMD:Policies and best practices for constants file: 1. All constants should be defined in this file, and should be organized in a logical manner (e.g. by feature or by type). 2. Constants should be named in a clear and descriptive way, using uppercase letters and underscores to separate words. 3. Constants should be grouped together based on their usage (e.g. all error messages together, all URLs together, etc.). 4. Each constant should have a comment explaining its purpose and how it should be used. 5. Avoid using magic numbers or strings in the code; instead, define them as constants in this file for better readability and maintainability.
  *--------------------------------------------------------------------------------------------*/
 
 import * as path from "path";
@@ -157,11 +167,12 @@ export const EXTENSION_STATE_KEY = {
 
 export const AUTH = {
   PLACEHOLDER_ENVIRONMENT_VAR_PROFILE_NAME: "__ENVIRONMENT_ASK_PROFILE__",
-  DEFAULT_CLIENT_ID: "amzn1.application-oa2-client.aad322b5faab44b980c8f87f94fbac56",
-  DEFAULT_CLIENT_CONFIRMATION: "1642d8869b829dda3311d6c6539f3ead55192e3fc767b9071c888e60ef151cf9",
-  SIGNIN_URL: "https://www.amazon.com/ap/signin",
-  SIGNIN_PATH: "/ap/signin",
-};
+  DEFAULT_CLIENT_ID: "amzn1.application-oa2-client.aad322b5faab44b980c8f87f94fbac56", // what does this client id do? is it for testing only or should it be used in production as well?
+  DEFAULT_CLIENT_CONFIRMATION: "1642d8869b829dda3311d6c6539f3ead55192e3fc767b9071c888e60ef151cf9", // same question for client secret as above
+  SIGNIN_URL: "https://www.amazon.com/ap/signin", // this is the url used for vscode authentication, it can be different from the one used in ask-cli, but currently we are using the same url for both. If there is a need in the future, we can separate them into two different urls.
+  SIGNIN_PATH: "/ap/signin", // this is the path used to detect authentication completion in vscode, it can be different from the one used in ask-cli, but currently we are using the same path for both. If there is a need in the future, we can separate them into two different paths.
+}; // The above constants are used for authentication. The client id and client confirmation are used to generate the login url for vscode authentication. The signin url and path are used to detect the completion of authentication in vscode.
+
 
 export const DYNAMIC_CONTENT = {
   BLOG_POSTS_JSON: "https://d177gaoewxhqz4.cloudfront.net/skills_blog.json",
